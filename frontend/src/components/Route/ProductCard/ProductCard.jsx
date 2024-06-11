@@ -12,8 +12,6 @@ import styles from "../../../styles/styles";
 import { useDispatch, useSelector } from "react-redux";
 import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
 import { useEffect } from "react";
-import { addTocart } from "../../../redux/actions/cart";
-import { toast } from "react-toastify";
 import Ratings from "../../Products/Ratings.jsx";
 
 const ProductCard = ({ data }) => {
@@ -25,7 +23,7 @@ const ProductCard = ({ data }) => {
     <>
       <div className="w-full h-[370px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer">
         <div className="flex justify-end"></div>
-        <Link to={`/profuct/${product_name}`}>
+        <Link to={`/product/${product_name}`}>
           <img
             src={data.image_Url[0].url}
             alt=""
