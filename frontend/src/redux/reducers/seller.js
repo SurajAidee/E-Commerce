@@ -3,7 +3,7 @@ import { createAction, createReducer } from "@reduxjs/toolkit";
 const initialState = {
   isSeller: false,
   seller: [],
-  isLoading: false,
+  isLoading: true,
 };
 
 // Define actions

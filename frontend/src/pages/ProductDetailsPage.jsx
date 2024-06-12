@@ -43,15 +43,17 @@ import { productData } from "../static/data";
 
 const ProductDetailsPage = () => {
   const { id } = useParams();
-  console.log(id);
+  console.log(id, productData);
 
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const data = productData.find((i) => id === id);
-    setData(data);
+    if (productData?.length && id) {
+      const data = productData.find((i) => i?.id == id);
+      setData(data);
+    }
   }, [id, productData]);
-
+  console.log("data>>>", data);
   return (
     <div>
       <Header />
