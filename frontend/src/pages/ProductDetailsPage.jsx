@@ -42,20 +42,15 @@ import { useParams } from "react-router-dom";
 import { productData } from "../static/data";
 
 const ProductDetailsPage = () => {
-  const { name } = useParams();
-  console.log("Product name from URL:", name);
+  const { id } = useParams();
+  console.log(id);
 
   const [data, setData] = useState(null);
-  const productName = name.replace(/-/g, " ");
-  console.log("Formatted product name:", productName);
 
   useEffect(() => {
-    const foundData = productData.find(
-      (i) => name.toLowerCase() === productName.toLowerCase()
-    );
-    console.log("Found product data:", foundData);
-    setData(foundData);
-  }, [productName]);
+    const data = productData.find((i) => id === id);
+    setData(data);
+  }, [id, productData]);
 
   return (
     <div>

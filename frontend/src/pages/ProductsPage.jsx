@@ -18,8 +18,8 @@ const ProductsPage = () => {
         productData && productData.sort((a, b) => a.total_sell - b.total_sell);
       setData(d);
     } else {
-      const d =
-        productData && productData.filter((i) => i.category === categoryData);
+      const d = 1;
+      productData && productData.filter((i) => i.category === categoryData);
       setData(d);
     }
     //    window.scrollTo(0,0);
