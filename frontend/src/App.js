@@ -25,13 +25,25 @@ import Store from "./redux/store.js";
 import { loadSeller, loadUser } from "./redux/actions/user.js";
 import ProtectedRoute from "./routes/ProtectedRoute.js";
 import { ShopHomePage } from "./ShopRoutes.js";
-import { ShopDashboardPage } from "./routes/ShopRoutes";
+import {
+  ShopDashboardPage,
+  ShopCreateProduct,
+  ShopAllProducts,
+  ShopCreateEvents,
+  ShopAllEvents,
+  ShopAllCoupouns,
+  ShopPreviewPage,
+} from "./routes/ShopRoutes";
 import SellerProtectedRoute from "./routes/SellerProtectedRoute.js";
+import { getAllProductsShop } from "./redux/actions/product.js";
+import { getAllEventsShop } from "./redux/actions/event.js";
 
 const App = () => {
   useEffect(() => {
     Store.dispatch(loadUser());
     Store.dispatch(loadSeller());
+    Store.dispatch(getAllProductsShop());
+    Store.dispatch(getAllEventsShop());
   }, []);
 
   return (
@@ -83,6 +95,47 @@ const App = () => {
             </SellerProtectedRoute>
           }
         />
+        <Route
+          path="/dashboard-create-product"
+          element={
+            <SellerProtectedRoute>
+              <ShopCreateProduct />
+            </SellerProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard-products"
+          element={
+            <SellerProtectedRoute>
+              <ShopAllProducts />
+            </SellerProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard-create-event"
+          element={
+            <SellerProtectedRoute>
+              <ShopCreateEvents />
+            </SellerProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard-events"
+          element={
+            <SellerProtectedRoute>
+              <ShopAllEvents />
+            </SellerProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard-coupouns"
+          element={
+            <SellerProtectedRoute>
+              <ShopAllCoupouns />
+            </SellerProtectedRoute>
+          }
+        />
+        <Route path="/shop/preview/:id" element={<ShopPreviewPage />} />
       </Routes>
       <ToastContainer
         position="bottom-center"
